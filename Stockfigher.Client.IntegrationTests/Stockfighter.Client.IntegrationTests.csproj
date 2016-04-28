@@ -57,7 +57,9 @@
   <ItemGroup>
     <Compile Include="GameMasterTests.cs" />
     <Compile Include="ClientTests.cs" />
+    <Compile Include="IQuotes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuoteFeedTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

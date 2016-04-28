@@ -4,7 +4,7 @@ using System;
 using System.Configuration;
 using System.Threading;
 
-namespace Stockfigher.Api.IntigrationTests
+namespace Stockfighter.Api.IntigrationTests
 {
     [TestClass]
     public class GameMasterTests
@@ -15,7 +15,7 @@ namespace Stockfigher.Api.IntigrationTests
 
             if (string.IsNullOrEmpty(apiKey))
             {
-                throw new InvalidOperationException("Unable to Instantiate StockFigherApi. ApiKey is missing from application settings");
+                throw new InvalidOperationException("Unable to Instantiate StockfighterApi. ApiKey is missing from application settings");
             }
 
             gameMasterApi = new GameMasterClient(apiKey);

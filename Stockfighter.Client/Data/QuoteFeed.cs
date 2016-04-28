@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-
 namespace Stockfighter.Client.Data
 {
-    public class StockQuoteResponse : Quote
+    public class QuoteFeedResponse
     {
         /// <summary>
         /// Indicated is a request is successful
@@ -18,13 +17,8 @@ namespace Stockfighter.Client.Data
         public string ErrorMessage { get; set; }
 
         /// <summary>
-        /// The id of a venue 
+        /// <see cref="Quote"/>
         /// </summary>
-        public string Venue { get; set; }
-
-        /// <summary>
-        /// The id of the stock symbol
-        /// </summary>
-        public string Symbol { get; set; }
+        public Quote Quote { get; set; }
     }
 }

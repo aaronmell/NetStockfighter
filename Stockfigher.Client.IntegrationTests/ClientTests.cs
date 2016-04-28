@@ -5,7 +5,7 @@ using System.Configuration;
 using Stockfighter.Client.Api;
 using Stockfighter.Client.Data;
 
-namespace Stockfigher.Api.IntigrationTests
+namespace Stockfighter.Api.IntigrationTests
 {
     [TestClass]
     public class ClientTests
@@ -16,10 +16,10 @@ namespace Stockfigher.Api.IntigrationTests
 
             if (string.IsNullOrEmpty(apiKey))
             {
-                throw new InvalidOperationException("Unable to Instantiate StockFigherApi. ApiKey is missing from application settings");
+                throw new InvalidOperationException("Unable to Instantiate StockfighterApi. ApiKey is missing from application settings");
             }
 
-            stockfighterApi = new Client(apiKey);
+            stockfighterApi = new Client.Api.Client(apiKey);
         }
 
         private IClient stockfighterApi;
