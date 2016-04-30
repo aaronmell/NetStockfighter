@@ -5,6 +5,6 @@
     /// </summary>
     public class Balances
     {
-        public decimal Usd { get; set; }
+        public int Usd { get; set; }
     }
 }

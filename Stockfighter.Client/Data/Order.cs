@@ -29,7 +29,7 @@ namespace Stockfighter.Client.Data
         /// <summary>
         /// The prices of the order, this may not match the price paid on the fills!
         /// </summary>
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         /// <summary>
         /// <see cref="OrderType"/>

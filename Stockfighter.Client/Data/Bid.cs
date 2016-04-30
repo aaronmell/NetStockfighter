@@ -10,7 +10,7 @@ namespace Stockfighter.Client.Data
         /// <summary>
         /// The price of the bid
         /// </summary>
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         /// <summary>
         /// The quantity of the bid

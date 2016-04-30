@@ -25,7 +25,7 @@ namespace Stockfighter.Client.Data
         /// <summary>
         /// The prce
         /// </summary>
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         /// <summary>
         /// The quantity

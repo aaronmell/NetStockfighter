@@ -207,19 +207,7 @@ namespace Stockfighter.Api.IntigrationTests
             Assert.IsTrue(result.IsCompleted);
 
             Assert.AreEqual(GoodVenue, result.Result.Venue);
-            Assert.AreEqual(GoodStock, result.Result.Symbol);
-
-
-            Assert.IsTrue(result.Result.Bids.Count > 0);
-            Assert.IsTrue(result.Result.Bids.All(x => x.IsBuy));
-            //Some prices can be 0
-            Assert.IsTrue(result.Result.Bids.Any(x => x.Price > 0));
-            Assert.IsTrue(result.Result.Bids.All(x => x.Quantity > 0));
-
-            Assert.IsTrue(result.Result.Asks.Count > 0);
-            Assert.IsTrue(result.Result.Asks.All(x => !x.IsBuy));
-            Assert.IsTrue(result.Result.Asks.All(x => x.Price > 0));
-            Assert.IsTrue(result.Result.Asks.All(x => x.Quantity > 0));
+            Assert.AreEqual(GoodStock, result.Result.Symbol);            
 
             Assert.IsTrue(result.Result.Timestamp.Ticks > 0);
         }
@@ -299,14 +287,7 @@ namespace Stockfighter.Api.IntigrationTests
 
             Assert.AreEqual(GoodStock, result.Result.Symbol);
             Assert.AreEqual(GoodVenue, result.Result.Venue);
-            Assert.IsTrue(result.Result.AskDepth > 0);
-            Assert.IsTrue(result.Result.AskPrice > 0);
-            Assert.IsTrue(result.Result.BidDepth > 0);
-            Assert.IsTrue(result.Result.BidPrice > 0);
-            Assert.IsTrue(result.Result.BidSize > 0);
-            Assert.IsTrue(result.Result.LastPrice > 0);
-            Assert.IsTrue(result.Result.LastSize > 0);
-
+           
             Assert.IsTrue(result.Result.LastQuoteUpdateTime.Ticks > 0);
             Assert.IsTrue(result.Result.LastTradeTime.Ticks > 0);
         }

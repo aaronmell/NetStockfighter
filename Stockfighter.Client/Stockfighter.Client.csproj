@@ -49,13 +49,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\QuotesFeed.cs" />
+    <Compile Include="Api\BaseFeed.cs" />
+    <Compile Include="Api\IExecutionFeed.cs" />
+    <Compile Include="Api\ExecutionFeed.cs" />
+    <Compile Include="Api\QuoteFeed.cs" />
     <Compile Include="Data\AllOrderStatusResponse.cs" />
     <Compile Include="Data\Balances.cs" />
     <Compile Include="Data\BaseResponse.cs" />
     <Compile Include="Data\BaseStockResponse.cs" />
     <Compile Include="Data\Bid.cs" />
     <Compile Include="Data\Direction.cs" />
+    <Compile Include="Data\ExecutionFeedResponse.cs" />
     <Compile Include="Data\Fills.cs" />
     <Compile Include="Data\InstanceDetails.cs" />
     <Compile Include="Data\LevelInstructions.cs" />
@@ -64,7 +68,7 @@
     <Compile Include="Data\OrderBookResponse.cs" />
     <Compile Include="Data\OrderType.cs" />
     <Compile Include="Data\Quote.cs" />
-    <Compile Include="Data\QuoteFeed.cs" />
+    <Compile Include="Data\QuoteFeedResponse.cs" />
     <Compile Include="Data\StockQuoteResponse.cs" />
     <Compile Include="Data\StockSymbol.cs" />
     <Compile Include="Data\SubmitOrderRequest.cs" />
@@ -75,7 +79,7 @@
     <Compile Include="Api\IGameMasterClient.cs" />
     <Compile Include="Data\InstanceDetailsResponse.cs" />
     <Compile Include="Api\IClient.cs" />
-    <Compile Include="Api\IQuotesFeed.cs" />
+    <Compile Include="Api\IQuoteFeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\StartLevelResponse.cs" />
     <Compile Include="Api\Client.cs" />

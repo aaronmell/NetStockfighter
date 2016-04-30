@@ -10,12 +10,13 @@ using System.Threading;
 namespace Stockfigher.Api.IntigrationTests
 {
     [TestClass]
-    public class QuotesFeedTests
+    public class QuoteFeedTests
     {
         private IGameMasterClient _gameMasterApi;
+        private IClient _client;
         private StartLevelResponse _startLevelResponse;
 
-        public QuotesFeedTests()
+        public QuoteFeedTests()
         {
             var apiKey = ConfigurationManager.AppSettings.Get("ApiKey");
 
@@ -25,6 +26,7 @@ namespace Stockfigher.Api.IntigrationTests
             }
 
             _gameMasterApi = new GameMasterClient(apiKey);
+            _client = new Client(apiKey);
         }     
         
         [TestInitialize]
@@ -47,16 +49,43 @@ namespace Stockfigher.Api.IntigrationTests
             stop.Wait();
 
             //To prevent getting locked out due to start/stop being too fast
-            Thread.Sleep(5000);
+            Thread.Sleep(15000);
         }   
 
         [TestMethod]
-        public void QuotesFeed_Returns_Quotes()
+        public void QuoteFeed_Returns_Quotes()
         {
             var quoteFeed = new QuotesFeed(_startLevelResponse.Account,_startLevelResponse.Venues.First(), false);
             var quotes = new List<QuoteFeedResponse>();
 
-            quoteFeed.QuoteReceived += (sender, e) =>
+            quoteFeed.messageRecieved += (sender, e) =>
+            {
+                quotes.Add(e);
+            };
+
+            quoteFeed.Start();
+
+            while (quotes.Count == 0)
+            {
+                Thread.Sleep(100);
+            }
+        }
+
+        [TestMethod]
+        public void QuoteFeed_Returns_Quotes_From_Stock()
+        {
+            var stocks = _client.GetStocksAsync(_startLevelResponse.Venues.First());
+            stocks.Wait();
+
+            if (stocks.IsFaulted || !stocks.Result.RequestSuccessful || !stocks.Result.StockSymbols.Any())
+            {
+                Assert.Fail("Unable to get stocks from the game instance");
+            }
+
+            var quoteFeed = new QuotesFeed(_startLevelResponse.Account, _startLevelResponse.Venues.First(), stocks.Result.StockSymbols.First().Symbol, false);
+            var quotes = new List<QuoteFeedResponse>();
+
+            quoteFeed.messageRecieved += (sender, e) =>
             {
                 quotes.Add(e);
             };

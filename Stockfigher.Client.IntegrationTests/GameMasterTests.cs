@@ -89,7 +89,7 @@ namespace Stockfighter.Api.IntigrationTests
         public void Run_Before_Each_Tests()
         {
             ///If we don't do this we will hit the rate limit
-            Thread.Sleep(5000);
+            Thread.Sleep(15000);
         }
     }
 }

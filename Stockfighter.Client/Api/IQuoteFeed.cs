@@ -2,7 +2,7 @@
 
 namespace Stockfighter.Client.Api
 {
-    public interface IQuotesFeed
+    public interface IQuoteFeed
     {
         void Start();
     }
